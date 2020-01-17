@@ -8,7 +8,7 @@ A collection of useful utilities and utility libraries for my projects.
 pip install pykasm-alkasm
 ```
 
-## Examples
+## Usage
 
 ### `TimeoutIterable`
 
