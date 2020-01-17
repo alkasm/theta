@@ -20,9 +20,9 @@ from pykasm import TimeoutIterable
 from time import sleep
 
 def tired_generator(n):
-    for seconds in range(n):
-        yield f"sleeping for {seconds} second(s)"
+    for seconds in range(1, n+1):
         sleep(seconds)
+        yield f"slept for {seconds} second(s)"
 
 # will timeout if more than 3 seconds elapse between iterations
 for v in TimeoutIterable(tired_generator(5), timeout=3.14):

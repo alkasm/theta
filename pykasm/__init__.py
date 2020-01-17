@@ -1,6 +1,6 @@
 """Python extensions by alkasm"""
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 
 from concurrent.futures import ThreadPoolExecutor, TimeoutError
