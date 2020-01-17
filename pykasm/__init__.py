@@ -31,6 +31,7 @@ import queue
 class StreamBuffer:
     """Buffers live stream data in a separate thread to be flushed on-demand.
     Use a context manager to start enqueueing the data from the stream. 
+
     Note: background thread may block indefinitely if the stream does, as well.
     
     Example
@@ -48,8 +49,7 @@ class StreamBuffer:
         self._t = threading.Thread(target=self._enqueue)
 
     def _enqueue(self):
-        # TODO: implement timeout using TimeoutIterable
-        # otherwise this could block indefinitely and never break from stop event being set
+        # TODO: any way to guarantee stopping?
         for val in self.stream:
             if self._stop_event.is_set():  # thread stopping condition
                 break
