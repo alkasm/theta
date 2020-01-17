@@ -1,0 +1,23 @@
+[build-system]
+requires = ["flit_core >=2,<3"]
+build-backend = "flit_core.buildapi"
+
+[tool.flit.metadata]
+module = "pykasm"
+dist-name = "pykasm-alkasm"
+author = "Alexander Reynolds"
+author-email = "ar@reynoldsalexander.com"
+home-page = "https://github.com/alkasm/pykasm"
+description-file = "README.md"
+requires-python = ">=3.6"
+requires = [
+    "sortedcollections",
+    "more-itertools",
+    "tqdm",
+    "timingdiagram-alkasm",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
