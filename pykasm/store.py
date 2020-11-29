@@ -12,7 +12,7 @@ Callback = Callable[[datetime, Any], Any]
 class Writer:
     """A writer for a specific key in the Store.
 
-    Not meant to be instantiated directly, but via `store.writer(key)`.
+    Not meant to be instantiated directly, but via `writer = store.writer(key)`.
     """
 
     def __init__(self, key: Any, submit: Callback):
@@ -56,7 +56,7 @@ class Store:
         writer = store.writer("data")
         for i in range(5):
             writer.write(i)
-        store.remove_callback("data", "q")
+        store.remove_callback("data", q_name)
         writer.write(5)  # value of 5 was only sent to the unnamed callback
 
         print("q", q)
@@ -95,6 +95,7 @@ class Store:
 
         Returns:
             str: An id for the callback, which can be used for unregistering the callback.
+                The string is in the form "<func_name>::<key>::<hex-uuid>"
         """
         id = f"{f.__name__}::{key}::{uuid4().hex}"
         self.callbacks[key][id] = f
@@ -132,5 +133,5 @@ class Store:
         return w
 
     def __repr__(self):
-        # ignore for vscode Pylance: https://github.com/microsoft/pylance-release/issues/658
+        # TODO: remove ignore for vscode Pylance: https://github.com/microsoft/pylance-release/issues/658
         return f"<{self.__class__.__qualname__} for keys {*(k for k in self.writers),}>"  # type: ignore[code]
