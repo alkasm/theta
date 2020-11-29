@@ -1,5 +1,3 @@
-# Callback interface
-
 from datetime import datetime
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
