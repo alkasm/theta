@@ -10,7 +10,7 @@ Callback = Callable[[datetime, Any], Any]
 
 
 class Writer:
-    """A writer for a specific key
+    """A writer for a specific key in the Store.
 
     Not meant to be instantiated directly, but via `store.writer(key)`.
     """
@@ -19,8 +19,13 @@ class Writer:
         self.key = key
         self.submit: Callback = submit
 
-    def write(self, val: Any):
-        self.submit(datetime.now(), val)
+    def write(self, value: Any):
+        """Writes a value to the store, executing any registered callbacks.
+
+        Args:
+            value: Value to write to the store.
+        """
+        self.submit(datetime.now(), value)
 
     def __repr__(self):
         return f"<{self.__class__.__qualname__} for key {self.key!r}>"
@@ -108,6 +113,18 @@ class Store:
         del self.callbacks[key][id]
 
     def writer(self, key: Any) -> Writer:
+        """Creates a writer for the specified key.
+
+        Args:
+            key: A key to associate writers and callbacks. Any dictionary key
+                is valid.
+
+        Raises:
+            ValueError: If a writer already exists for this key.
+
+        Returns:
+            A writer for the specified key.
+        """
         if key in self.writers:
             raise ValueError(f"Already created a writer for key {key}")
         w = Writer(key, self._submitter(key))
@@ -117,8 +134,3 @@ class Store:
     def __repr__(self):
         # ignore for vscode Pylance: https://github.com/microsoft/pylance-release/issues/658
         return f"<{self.__class__.__qualname__} for keys {*(k for k in self.writers),}>"  # type: ignore[code]
-
-
-store = Store(ThreadPoolExecutor())
-writer = store.writer(int)
-print(store)
