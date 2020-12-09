@@ -131,5 +131,4 @@ class Store:
         return w
 
     def __repr__(self):
-        # TODO: remove ignore for vscode Pylance: https://github.com/microsoft/pylance-release/issues/658
-        return f"<{self.__class__.__qualname__} for keys {*(k for k in self.writers),}>"  # type: ignore[code]
+        return f"<{self.__class__.__qualname__} for keys {*(k for k in self.writers),}>"
