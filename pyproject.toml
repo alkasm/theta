@@ -5,7 +5,7 @@ build-backend = "flit_core.buildapi"
 [tool.flit.metadata]
 module = "pykasm"
 dist-name = "pykasm-alkasm"
-author = "Alexander Reynolds"
+author = "alkasm"
 author-email = "alkasm@theory.shop"
 home-page = "https://github.com/alkasm/pykasm"
 description-file = "README.md"
