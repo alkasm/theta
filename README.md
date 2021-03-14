@@ -1,6 +1,6 @@
 # pykasm
 
-A collection of useful utilities and utility libraries for my projects.
+Utilities for Python applications.
 
 ## Install
 
