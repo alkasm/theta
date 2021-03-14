@@ -1,9 +1,10 @@
 import functools
 import logging
 import time
+from typing import Callable
 
 
-def timed(func):
+def timed(func: Callable) -> Callable:
     """Log the execution time for the decorated function as a DEBUG message.
 
     .. code-block:: python
