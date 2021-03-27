@@ -14,8 +14,8 @@ In a virtual environment:
 
 ```
 $ poetry install
-$ pip install .
-$ python -m pytest
-$ black pykasm
-$ mypy pykasm
+$ poetry check
+$ poetry run pytest
+$ poetry run black pykasm
+$ poetry run mypy pykasm
 ```
