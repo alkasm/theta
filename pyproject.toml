@@ -3,7 +3,7 @@ name = "pykasm-alkasm"
 packages = [
     {include = "pykasm"}
 ]
-version = "1.0.0"
+version = "1.0.1"
 description = "Extensions for multithreaded Python applications."
 authors = ["Alexander Reynolds <alex@theory.shop>"]
 license = "MIT"
