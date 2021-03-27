@@ -2,15 +2,6 @@ import threading
 from typing import Any, Optional
 
 
-class ThreadStopped(Exception):
-    """For use by any stoppable threads as a mechanism for signalling.
-
-    Useful for private methods to raise back to the main run() method.
-    """
-
-    pass
-
-
 class StoppableThread(threading.Thread):
     """A thread which can be requested to stop running externally.
 
@@ -23,8 +14,8 @@ class StoppableThread(threading.Thread):
     function can use the stop event.
 
     Note that stoppable threads require cooperation. Subclasses that implement
-    the usual `run()` method should check if the thread is `running()` often,
-    and should use `sleep(interval)` which will wake if the stop event is set.
+    the usual `run()` method for long-running tasks can check if the thread is
+    `running()` or can use `wait(interval)` for tasks that run on an interval.
     """
 
     stop_event: threading.Event
@@ -32,7 +23,9 @@ class StoppableThread(threading.Thread):
     def __init__(
         self, *args: Any, stop_event: Optional[threading.Event] = None, **kwargs: Any
     ):
-        """
+        """Initializes a thread, passing on the args and kwargs to the superclass,
+        except `stop_event`.
+
         Args:
             stop_event: Thread stopping event, which can be externally set.
                 If None, creates a new threading.Event().
@@ -44,22 +37,16 @@ class StoppableThread(threading.Thread):
         """Checks if the thread has not been requested to stop."""
         return not self.stopped()
 
-    def sleep(self, interval: float) -> bool:
+    def wait(self, interval: float) -> bool:
         """Sleeps using the stop event, which will wake up if the thread is asked to stop.
 
         Args:
             interval: Length of time to sleep, in seconds.
         """
-        return bool(self.stop_event.wait(interval))
+        return self.stop_event.wait(interval)
 
     def stop(self) -> None:
-        """Set the stop flag for the thread.
-
-        Raises:
-            RuntimeError: if the thread has already been requested to stop.
-        """
-        if self.stop_event.is_set():
-            raise RuntimeError("This thread has already been requested to stop.")
+        """Set the stop flag for the thread. Safe to call multiple times."""
         self.stop_event.set()
 
     def stopped(self) -> bool:
