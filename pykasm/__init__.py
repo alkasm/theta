@@ -1,3 +1,3 @@
-"""Python extensions by alkasm"""
+"""Extensions for multithreaded Python applications."""
 
 __version__ = "1.0.0"
