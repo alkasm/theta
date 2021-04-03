@@ -72,9 +72,19 @@ def test_evicting_queue_iter_timeout():
     assert q.empty()
 
 
+def _suppress_q_exceptions(f):
+    def g():
+        try:
+            f()
+        except (theoryshop.QueueStopped, theoryshop.QueueTimeout, StopIteration):
+            pass
+
+    return g
+
+
 def test_evicting_queue_blocking_get():
     q = EQ()
-    t = threading.Thread(target=q.get)
+    t = threading.Thread(target=_suppress_q_exceptions(q.get))
     t.start()
     assert t.is_alive()  # thread has not finished / is currently blocking
     q.put("value")
@@ -84,7 +94,7 @@ def test_evicting_queue_blocking_get():
 
 def test_evicting_queue_blocking_iter():
     q = EQ()
-    t = threading.Thread(target=lambda: next(q.__iter__()))
+    t = threading.Thread(target=_suppress_q_exceptions(lambda: next(q.__iter__())))
     t.start()
     assert t.is_alive()
     q.put("value")
@@ -94,7 +104,7 @@ def test_evicting_queue_blocking_iter():
 
 def test_evicting_queue_blocking_iter_timeout():
     q = EQ()
-    t = threading.Thread(target=lambda: next(q.iter_timeout(0)))
+    t = threading.Thread(target=_suppress_q_exceptions(lambda: next(q.iter_timeout(0))))
     q.put(0)
     t.start()
     q.put(1)
@@ -106,7 +116,7 @@ def test_evicting_queue_blocking_iter_timeout():
 
 def test_evicting_queue_stop():
     q = EQ()
-    t = threading.Thread(target=q.get)
+    t = threading.Thread(target=_suppress_q_exceptions(q.get))
     t.start()
     assert t.is_alive()
     q.stop()
@@ -117,7 +127,7 @@ def test_evicting_queue_stop():
 
 def test_evicting_queue_stop_iter():
     q = EQ()
-    t = threading.Thread(target=lambda: next(q.__iter__()))
+    t = threading.Thread(target=_suppress_q_exceptions(lambda: next(q.__iter__())))
     t.start()
     assert t.is_alive()
     q.stop()
@@ -128,7 +138,9 @@ def test_evicting_queue_stop_iter():
 
 def test_evicting_queue_stop_iter_timeout():
     q = EQ()
-    t = threading.Thread(target=lambda: next(q.iter_timeout(100)))
+    t = threading.Thread(
+        target=_suppress_q_exceptions(lambda: next(q.iter_timeout(100)))
+    )
     t.start()
     assert t.is_alive()
     q.stop()

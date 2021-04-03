@@ -21,9 +21,11 @@ def test_store_writer(store):
     l = []
     w = store.writer("key")
     store.add_callback("key", l.append)
-    w.write(1)
+    fs1 = w.write(1)
+    concurrent.futures.wait(fs1)
     assert l == [1]
-    w.write("2")
+    fs2 = w.write("2")
+    concurrent.futures.wait(fs2)
     assert l == [1, "2"]
 
 
@@ -32,9 +34,11 @@ def test_multiple_writers(store):
     w1 = store.writer("key")
     w2 = store.writer("key")
     store.add_callback("key", l.append)
-    w1.write(1)
+    fs1 = w1.write(1)
+    concurrent.futures.wait(fs1)
     assert l == [1]
-    w2.write("2")
+    fs2 = w2.write("2")
+    concurrent.futures.wait(fs2)
     assert l == [1, "2"]
 
 
@@ -44,10 +48,12 @@ def test_multiple_callbacks(store):
     w = store.writer("key")
     store.add_callback("key", l.append)
     store.add_callback("key", lambda v: d.update(value=v))
-    w.write(1)
+    fs1 = w.write(1)
+    concurrent.futures.wait(fs1)
     assert l == [1]
     assert d == {"value": 1}
-    w.write("2")
+    fs2 = w.write("2")
+    concurrent.futures.wait(fs2)
     assert l == [1, "2"]
     assert d == {"value": "2"}
 
@@ -59,10 +65,12 @@ def test_multiple_callbacks_multiple_writers(store):
     w2 = store.writer("key")
     store.add_callback("key", l.append)
     store.add_callback("key", lambda v: d.update(value=v))
-    w1.write(1)
+    fs1 = w1.write(1)
+    concurrent.futures.wait(fs1)
     assert l == [1]
     assert d == {"value": 1}
-    w2.write("2")
+    fs2 = w2.write("2")
+    concurrent.futures.wait(fs2)
     assert l == [1, "2"]
     assert d == {"value": "2"}
 
