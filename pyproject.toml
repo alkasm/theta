@@ -1,16 +1,15 @@
 [tool.poetry]
-name = "pykasm-alkasm"
+name = "theoryshop-alkasm"
 packages = [
-    {include = "pykasm"}
+    {include = "theoryshop"}
 ]
 version = "1.0.1"
 description = "Extensions for multithreaded Python applications."
 authors = ["Alexander Reynolds <alex@theory.shop>"]
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/alkasm/pykasm"
+repository = "https://github.com/alkasm/theoryshop"
 include = ["py.typed"]
-
 
 [tool.poetry.dependencies]
 python = "^3.6"

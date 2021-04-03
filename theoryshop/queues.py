@@ -5,7 +5,7 @@ from typing import Generic, Iterable, List, Optional, TypeVar
 _T = TypeVar("_T")
 
 
-class TimeoutError(Exception):
+class QueueTimeout(Exception):
     pass
 
 
@@ -39,15 +39,15 @@ class EvictingQueue(Generic[_T]):
 
     .. code-block::
 
-        try:
-            while True:
-                try:
-                    item = q.get(timeout=0.1)
-                    process(item)
-                except TimeoutError:
-                    handle_timeout()
-        except QueueStopped:
-            cleanup()
+        while True:
+            try:
+                item = q.get(timeout=0.1)
+                process(item)
+            except QueueTimeout:
+                handle_timeout()
+            except QueueStopped:
+                cleanup()
+                break
 
     Use as a buffer by flushing the data in the queue on demand.
 
@@ -57,17 +57,16 @@ class EvictingQueue(Generic[_T]):
         while True:
             time.sleep(1)
             process_many(q.flush())
-
     """
 
-    q: collections.deque
-    cv: threading.Condition
-    stop_event: threading.Event
+    _q: collections.deque
+    _cv: threading.Condition
+    _stop_event: threading.Event
 
     def __init__(self, size: Optional[int] = None):
-        self.q = collections.deque(maxlen=size)
-        self.cv = threading.Condition()
-        self.stop_event = threading.Event()
+        self._q = collections.deque(maxlen=size)
+        self._cv = threading.Condition()
+        self._stop_event = threading.Event()
 
     def empty(self) -> bool:
         """Equivalent to `len(q) == 0`"""
@@ -80,16 +79,16 @@ class EvictingQueue(Generic[_T]):
     def get(self, timeout: Optional[float] = None) -> _T:
         """Blocking get with an optional timeout. Pops the oldest item in the queue.
 
-        Raises a `queue.TimeoutError` if the timeout expires before an item is available.
+        Raises a `queue.QueueTimeout` if the timeout expires before an item is available.
         Raises a `queue.QueueStopped` if the queue has been stopped.
         """
-        with self.cv:
-            unblocked = self.cv.wait_for(self._unblocked, timeout)
+        with self._cv:
+            unblocked = self._cv.wait_for(self._unblocked, timeout)
             if unblocked:
                 if self.stopped():
                     raise QueueStopped
-                return self.q.popleft()
-            raise TimeoutError
+                return self._q.popleft()
+            raise QueueTimeout
 
     def iter_timeout(self, timeout: Optional[float] = None) -> Iterable[_T]:
         """Iterate over values as they become available. Will block for at most `timeout` seconds.
@@ -102,7 +101,7 @@ class EvictingQueue(Generic[_T]):
             while True:
                 try:
                     yield self.get(timeout=timeout)
-                except TimeoutError:
+                except QueueTimeout:
                     return
         except QueueStopped:
             return
@@ -112,38 +111,38 @@ class EvictingQueue(Generic[_T]):
 
         Raises an `IndexError` if the queue is empty.
         """
-        return self.q[-1]
+        return self._q[-1]
 
     def peekleft(self) -> _T:
         """Retrieve the oldest value in the queue, without removing it from the queue.
 
         Raises an `IndexError` if the queue is empty.
         """
-        return self.q[0]
+        return self._q[0]
 
     def put(self, value: _T) -> None:
         """Put an item on the queue, evicting the oldest item if the queue is full.
 
         This method is non-blocking.
         """
-        with self.cv:
-            self.q.append(value)
-            self.cv.notify_all()
+        with self._cv:
+            self._q.append(value)
+            self._cv.notify_all()
 
     def stop(self) -> None:
         """Propogate a queue.QueueStopped exception to all threads blocking on `get()`."""
-        with self.cv:
-            self.stop_event.set()
-            self.cv.notify_all()
+        with self._cv:
+            self._stop_event.set()
+            self._cv.notify_all()
 
     def stopped(self) -> bool:
-        return self.stop_event.is_set()
+        return self._stop_event.is_set()
 
     def _unblocked(self) -> bool:
         return self.stopped() or not self.empty()
 
     def __len__(self) -> int:
-        return len(self.q)
+        return len(self._q)
 
     def __iter__(self) -> Iterable[_T]:
         """Iterate over values as they become available. May block for an arbitrarily long time.

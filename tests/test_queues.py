@@ -1,8 +1,8 @@
 import threading
 import pytest
-import pykasm.queues
+import theoryshop
 
-EQ = pykasm.queues.EvictingQueue
+EQ = theoryshop.EvictingQueue
 
 
 def test_evicting_queue_basic():

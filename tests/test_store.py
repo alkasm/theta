@@ -1,16 +1,16 @@
 import pytest
-import pykasm.store
+import theoryshop
 import concurrent.futures
 
 
 @pytest.fixture
 def store():
-    return pykasm.store.Store(concurrent.futures.ThreadPoolExecutor())
+    return theoryshop.Store(concurrent.futures.ThreadPoolExecutor())
 
 
 def test_writer():
     l = []
-    w = pykasm.store.Writer("key", l.append)
+    w = theoryshop.Writer("key", l.append)
     w.write(1)
     assert l == [1]
     w.write("2")
