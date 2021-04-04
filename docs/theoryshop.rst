@@ -16,7 +16,6 @@ Store
    :undoc-members:
    :show-inheritance:
 
-
 Queues
 ------
 

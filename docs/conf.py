@@ -46,7 +46,7 @@ templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 # Autodoc typehinting rules
-autodoc_typehints = "description"
+# autodoc_typehints = "description"
 autodoc_inherit_docstrings = False
 
 # Let `backticks` refer to Python objects by default
