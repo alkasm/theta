@@ -55,18 +55,20 @@ class Store:
         {'value': 5}
     """
 
-    executor: concurrent.futures.ThreadPoolExecutor
-    writers: Dict[Any, "Writer"]
-    callbacks: DefaultDict[Any, Dict[str, Callback]]
-    _callback_keys: Dict[str, Any]
-    _callback_lock: threading.Lock
-
     def __init__(self, executor: concurrent.futures.ThreadPoolExecutor):
-        self.executor = executor
-        self.writers = {}
-        self.callbacks = collections.defaultdict(dict)
-        self._callback_keys = {}
-        self._callback_lock = threading.Lock()
+        """Initialize a Store.
+
+        Args:
+            executor: Thread pool executor to submit callback tasks, ran when
+                data is added to the store.
+        """
+        self.executor: concurrent.futures.ThreadPoolExecutor = executor
+        self.writers: Dict[Any, "Writer"] = {}
+        self.callbacks: DefaultDict[Any, Dict[str, Callback]] = collections.defaultdict(
+            dict
+        )
+        self._callback_keys: Dict[str, Any] = {}
+        self._callback_lock: threading.Lock = threading.Lock()
 
     def add_callback(self, key: Any, f: Callback) -> str:
         """Add a callback to execute on new values written under the key.
@@ -83,8 +85,8 @@ class Store:
                 are logged, then ignored.
 
         Returns:
-            str: An id for the callback, which can be used for unregistering
-                the callback. The id has the form "<key>::<f.__name__>::<uuid>".
+            An id for the callback, which can be used for unregistering the
+            callback. The id has the form "<key>::<f.__name__>::<uuid>".
         """
         id = f"{key}::{f.__name__}::{uuid.uuid4().hex}"
         with self._callback_lock:
@@ -147,6 +149,12 @@ class Writer:
     """
 
     def __init__(self, key: Any, submit: Submitter):
+        """Initializes a writer.
+
+        Args:
+            key: The key for the writer.
+            submit: The callback function to submit a value to the store.
+        """
         self.key = key
         self.submit: Submitter = submit
 
@@ -154,7 +162,13 @@ class Writer:
         """Writes a value to the store, executing any registered callbacks.
 
         This method is non-blocking, however the futures to the callbacks
-        are returned to wait on, if desired.
+        are returned to wait on, if desired. For example:
+
+        .. code-block:: python
+
+            writer = store.writer("key")
+            fs = writer.write("value")
+            concurrent.futures.wait(fs)
 
         Args:
             value: Value to write to the store.
