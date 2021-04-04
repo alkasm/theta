@@ -3,7 +3,7 @@ name = "theoryshop-alkasm"
 packages = [
     {include = "theoryshop"}
 ]
-version = "1.1.0"
+version = "1.1.1"
 description = "Extensions for multithreaded Python applications."
 authors = ["Alexander Reynolds <alex@theory.shop>"]
 license = "MIT"
