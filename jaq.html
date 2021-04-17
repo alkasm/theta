@@ -1,0 +1,532 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="Welcome to jaq’s documentation!" href="index.html" />
+
+    <meta name="generator" content="sphinx-3.5.3, furo 2021.03.20.beta31"/>
+        <title>jaq package - jaq documentation</title>
+      <link rel="stylesheet" href="_static/styles/furo.css?digest=978e1795dfe158b585dda6a8417f6411828bf3ed">
+    <link rel="stylesheet" href="_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" href="_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">jaq  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">jaq  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">jaq package</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <section id="jaq-package">
+<h1>jaq package<a class="headerlink" href="#jaq-package" title="Permalink to this headline">¶</a></h1>
+<section id="store">
+<h2>Store<a class="headerlink" href="#store" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="jaq.Store">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">Store</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">executor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">concurrent.futures.thread.ThreadPoolExecutor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#jaq.Store" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Store for arbitrary data with an executor for submitting callback tasks.</p>
+<p>Register callbacks and create writers associated to a key; when a writer
+writes to the store, it will submit tasks to the executor to invoke all the
+callbacks for that key with the newly written value.</p>
+<p>Retrieve a writer for some key with <code class="xref py py-obj docutils literal notranslate"><span class="pre">store.writer(key)</span></code>.</p>
+<p>The callback functions provided must take a single positional argument,
+and will be called with the new value added to the store. Callback return
+values are available as futures from <a class="reference internal" href="#jaq.Writer.write" title="jaq.Writer.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Writer.write()</span></code></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">ThreadPoolExecutor</span>
+<span class="kn">from</span> <span class="nn">jaq</span> <span class="kn">import</span> <span class="n">Store</span>
+
+<span class="n">executor</span> <span class="o">=</span> <span class="n">ThreadPoolExecutor</span><span class="p">()</span>
+<span class="n">store</span> <span class="o">=</span> <span class="n">Store</span><span class="p">(</span><span class="n">executor</span><span class="p">)</span>
+
+<span class="c1"># q holds a queue of data, d holds the most recent value</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'value'</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+
+<span class="c1"># store a reference to the callback to remove later</span>
+<span class="n">q_id</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="s2">"data"</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">append</span><span class="p">)</span>
+
+<span class="c1"># reference not needed since this callback won't be removed</span>
+<span class="n">store</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="s2">"data"</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">val</span><span class="p">:</span> <span class="n">d</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">val</span><span class="p">))</span>
+
+<span class="n">writer</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="s2">"data"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="n">store</span><span class="o">.</span><span class="n">remove_callback</span><span class="p">(</span><span class="n">q_id</span><span class="p">)</span>
+<span class="n">writer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># value of 5 was only sent to the unnamed callback</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"q"</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"d"</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deque</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="p">{</span><span class="s1">'value'</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>executor</strong> – Thread pool to submit callback tasks, used when data is
+added to the store.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="jaq.Store.add_callback">
+<code class="sig-name descname"><span class="pre">add_callback</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> → <span class="pre">str</span><a class="headerlink" href="#jaq.Store.add_callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a callback to execute on new values written under the key.</p>
+<p>Returns a string identifier for the callback, which can be used to
+remove it with <a class="reference internal" href="#jaq.Store.remove_callback" title="jaq.Store.remove_callback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_callback()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – The key which links the callback to the writer. Can be any
+immutable type (same restriction as a dictionary key).</p></li>
+<li><p><strong>f</strong> – Callable executed as f(value) for each new value written to the
+store under this key. Return values are available via futures
+that the writer returns. Exceptions encountered while running
+are logged, then ignored.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="jaq.Store.remove_callback">
+<code class="sig-name descname"><span class="pre">remove_callback</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> → <span class="pre">None</span><a class="headerlink" href="#jaq.Store.remove_callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the specified callback.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>KeyError</strong> – If there is no callback with the given id.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="jaq.Store.writer">
+<code class="sig-name descname"><span class="pre">writer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> → <span class="pre">jaq.store.Writer</span><a class="headerlink" href="#jaq.Store.writer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates or retrieves a writer for the specified key.</p>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="jaq.Writer">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">Writer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">submit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">concurrent.futures._base.Future</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#jaq.Writer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A writer for a specific key in the Store.</p>
+<p>Should be instantiated via <code class="xref py py-obj docutils literal notranslate"><span class="pre">writer</span> <span class="pre">=</span> <span class="pre">store.writer(key)</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – The key for the writer.</p></li>
+<li><p><strong>submit</strong> – The callback function to submit a value to the store.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="jaq.Writer.write">
+<code class="sig-name descname"><span class="pre">write</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> → <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">concurrent.futures._base.Future</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#jaq.Writer.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a value to the store, executing all registered callbacks. Returns
+the futures from the submitted callbacks.</p>
+<p>This method is non-blocking, however the futures to the callbacks
+are returned to wait on, if desired. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">writer</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="s2">"key"</span><span class="p">)</span>
+<span class="n">fs</span> <span class="o">=</span> <span class="n">writer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"value"</span><span class="p">)</span>
+<span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">fs</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+</dd></dl>
+</section>
+<section id="queues">
+<h2>Queues<a class="headerlink" href="#queues" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="jaq.EvictingQueue">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">EvictingQueue</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#jaq.EvictingQueue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">jaq.queues.T</span></code>]</p>
+<p>Thread-safe FIFO queue with blocking gets and evicting, non-blocking puts.</p>
+<p>Basic reads are as simple as using <a class="reference internal" href="#jaq.EvictingQueue.get" title="jaq.EvictingQueue.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get()</span></code></a> or iterating over the queue.
+Iteration will exhaust once <a class="reference internal" href="#jaq.EvictingQueue.stop" title="jaq.EvictingQueue.stop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stop()</span></code></a> is called. Can also be used as a
+buffer with <a class="reference internal" href="#jaq.EvictingQueue.flush" title="jaq.EvictingQueue.flush"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flush()</span></code></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">jaq</span> <span class="kn">import</span> <span class="n">EvictingQueue</span>
+
+<span class="n">q</span> <span class="o">=</span> <span class="n">EvictingQueue</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="o">...</span>
+
+<span class="n">first_item</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">q</span><span class="p">:</span>
+    <span class="n">process</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To break iteration on a timeout between gets, use <a class="reference internal" href="#jaq.EvictingQueue.iter_timeout" title="jaq.EvictingQueue.iter_timeout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iter_timeout()</span></code></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">q</span><span class="o">.</span><span class="n">iter_timeout</span><span class="p">(</span><span class="mf">1.5</span><span class="p">):</span>
+    <span class="c1"># will end after 1.5 seconds has elapsed without a new value</span>
+    <span class="n">process</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="n">cleanup</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>To handle timeouts and stopping separately, manually <a class="reference internal" href="#jaq.EvictingQueue.get" title="jaq.EvictingQueue.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get()</span></code></a> in a loop.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+        <span class="n">process</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">QueueTimeout</span><span class="p">:</span>
+        <span class="n">handle_timeout</span><span class="p">()</span>
+    <span class="k">except</span> <span class="n">QueueStopped</span><span class="p">:</span>
+        <span class="n">cleanup</span><span class="p">()</span>
+        <span class="k">break</span>
+</pre></div>
+</div>
+<p>Use as a buffer by flushing the queue on demand.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># some other thread adding items with `q.put()`</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">process_many</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">flush</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>If size is None, the queue is unbounded.</p>
+<dl class="py method">
+<dt id="jaq.EvictingQueue.empty">
+<code class="sig-name descname"><span class="pre">empty</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">bool</span><a class="headerlink" href="#jaq.EvictingQueue.empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the queue is empty.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="jaq.EvictingQueue.flush">
+<code class="sig-name descname"><span class="pre">flush</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#jaq.EvictingQueue.flush" title="Permalink to this definition">¶</a></dt>
+<dd><p>Consume and return all values currently in the queue.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="jaq.EvictingQueue.get">
+<code class="sig-name descname"><span class="pre">get</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> → <span class="pre">T</span><a class="headerlink" href="#jaq.EvictingQueue.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Blocking get with an optional timeout, in seconds. Pops the oldest item
+off the queue. Blocks indefinitely if the timeout is None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="#jaq.QueueStopped" title="jaq.QueueStopped"><strong>QueueStopped</strong></a> – if the queue has been stopped.</p></li>
+<li><p><a class="reference internal" href="#jaq.QueueTimeout" title="jaq.QueueTimeout"><strong>QueueTimeout</strong></a> – if the timeout expires before an item is available.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="jaq.EvictingQueue.iter_timeout">
+<code class="sig-name descname"><span class="pre">iter_timeout</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> → <span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#jaq.EvictingQueue.iter_timeout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterate over values as they become available in FIFO order. The
+iterator exhausts if the timeout (in seconds) expires before a new
+value is put on the queue, or if the queue is stopped. If the timeout
+is None, this method is equivalent to <code class="xref py py-obj docutils literal notranslate"><span class="pre">__iter__()</span></code>.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="jaq.EvictingQueue.peek">
+<code class="sig-name descname"><span class="pre">peek</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">T</span><a class="headerlink" href="#jaq.EvictingQueue.peek" title="Permalink to this definition">¶</a></dt>
+<dd><p>Peek at the newest value in the queue, without removing it from the queue.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>IndexError</strong> – if the queue is empty.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="jaq.EvictingQueue.peekleft">
+<code class="sig-name descname"><span class="pre">peekleft</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">T</span><a class="headerlink" href="#jaq.EvictingQueue.peekleft" title="Permalink to this definition">¶</a></dt>
+<dd><p>Peek at the oldest value in the queue, without removing it from the queue.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>IndexError</strong> – if the queue is empty.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="jaq.EvictingQueue.put">
+<code class="sig-name descname"><span class="pre">put</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">T</span></span></em><span class="sig-paren">)</span> → <span class="pre">None</span><a class="headerlink" href="#jaq.EvictingQueue.put" title="Permalink to this definition">¶</a></dt>
+<dd><p>Put an item on the queue, evicting the oldest item if the queue is
+full. This method is non-blocking.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="jaq.EvictingQueue.stop">
+<code class="sig-name descname"><span class="pre">stop</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">None</span><a class="headerlink" href="#jaq.EvictingQueue.stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Propogate a QueueStopped exception to all threads blocking on <a class="reference internal" href="#jaq.EvictingQueue.get" title="jaq.EvictingQueue.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get()</span></code></a>.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="jaq.EvictingQueue.stopped">
+<code class="sig-name descname"><span class="pre">stopped</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">bool</span><a class="headerlink" href="#jaq.EvictingQueue.stopped" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the queue has been stopped.</p>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt id="jaq.QueueStopped">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">QueueStopped</span></code><a class="headerlink" href="#jaq.QueueStopped" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Raised when a queue has been flagged to stop.</p>
+</dd></dl>
+<dl class="py class">
+<dt id="jaq.QueueTimeout">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">QueueTimeout</span></code><a class="headerlink" href="#jaq.QueueTimeout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Raised when a timeout has expired for a blocking get.</p>
+</dd></dl>
+</section>
+<section id="thread-utilities">
+<h2>Thread Utilities<a class="headerlink" href="#thread-utilities" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="jaq.StoppableThread">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">StoppableThread</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop_event</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">threading.Event</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#jaq.StoppableThread" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">threading.Thread</span></code></p>
+<p>A thread which can be requested to stop running externally.</p>
+<p>Stop requests are handled by a stop event which can be shared externally.</p>
+<p>Note that stoppable threads require cooperation. Subclasses that implement
+the usual <code class="xref py py-obj docutils literal notranslate"><span class="pre">run()</span></code> method for long-running tasks can check if the thread is
+<a class="reference internal" href="#jaq.StoppableThread.running" title="jaq.StoppableThread.running"><code class="xref py py-obj docutils literal notranslate"><span class="pre">running()</span></code></a> or can use <a class="reference internal" href="#jaq.StoppableThread.wait" title="jaq.StoppableThread.wait"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wait()</span></code></a> for tasks that run on an interval.</p>
+<p>This class can be used like a normal thread with a target function to run.
+The stop event can be constructed externally and passed in, so the target
+function can utilize the event.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">jaq</span> <span class="kn">import</span> <span class="n">StoppableThread</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">sleeper</span><span class="p">(</span><span class="n">stop_event</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">stop_event</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">t</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Slept for between </span><span class="si">%d</span><span class="s2"> and </span><span class="si">%d</span><span class="s2"> seconds"</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">t</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">event</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Event</span><span class="p">()</span>
+<span class="n">thread</span> <span class="o">=</span> <span class="n">StoppableThread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">sleeper</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">event</span><span class="p">,),</span> <span class="n">stop_event</span><span class="o">=</span><span class="n">event</span><span class="p">)</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">2.1</span><span class="p">)</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This class can also be subclassed. Methods are provided to interact with
+the stop event. Subclassing works the same as with a <code class="xref py py-obj docutils literal notranslate"><span class="pre">threading.Thread</span></code>;
+implement the <code class="xref py py-obj docutils literal notranslate"><span class="pre">run()</span></code> function, which gets called on <code class="xref py py-obj docutils literal notranslate"><span class="pre">start()</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SleeperThread</span><span class="p">(</span><span class="n">StoppableThread</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">t</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Slept for between </span><span class="si">%d</span><span class="s2"> and </span><span class="si">%d</span><span class="s2"> seconds"</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">t</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">thread</span> <span class="o">=</span> <span class="n">SleeperThread</span><span class="p">()</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">2.1</span><span class="p">)</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>stop_event</strong> – Thread stopping event, which can be externally set.
+If None, creates a new <code class="xref py py-obj docutils literal notranslate"><span class="pre">threading.Event</span></code>.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="jaq.StoppableThread.running">
+<code class="sig-name descname"><span class="pre">running</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">bool</span><a class="headerlink" href="#jaq.StoppableThread.running" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if the thread has not been requested to stop.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="jaq.StoppableThread.stop">
+<code class="sig-name descname"><span class="pre">stop</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">None</span><a class="headerlink" href="#jaq.StoppableThread.stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the stop flag for the thread. Safe to call multiple times.</p>
+</dd></dl>
+<dl class="py attribute">
+<dt id="jaq.StoppableThread.stop_event">
+<code class="sig-name descname"><span class="pre">stop_event</span></code><em class="property"><span class="pre">:</span> <span class="pre">threading.Event</span></em><a class="headerlink" href="#jaq.StoppableThread.stop_event" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="jaq.StoppableThread.stopped">
+<code class="sig-name descname"><span class="pre">stopped</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">bool</span><a class="headerlink" href="#jaq.StoppableThread.stopped" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if the thread has been requested to stop.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="jaq.StoppableThread.wait">
+<code class="sig-name descname"><span class="pre">wait</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> → <span class="pre">bool</span><a class="headerlink" href="#jaq.StoppableThread.wait" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wait on the stop event for an interval (in seconds), waking up if set.
+If the interval is None, blocks indefinitely. Returns True if the flag
+was interrupted and set, otherwise False (i.e., a timeout occurred).</p>
+</dd></dl>
+</dd></dl>
+</section>
+</section>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          
+          <a class="prev-page" href="index.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Home</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, Alexander Reynolds
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="_sources/jaq.rst.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">jaq package</a><ul>
+<li><a class="reference internal" href="#store">Store</a></li>
+<li><a class="reference internal" href="#queues">Queues</a></li>
+<li><a class="reference internal" href="#thread-utilities">Thread Utilities</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+</html>
