@@ -1,16 +1,16 @@
 import pytest
-import theoryshop
+import jaq
 import concurrent.futures
 
 
 @pytest.fixture
 def store():
-    return theoryshop.Store(concurrent.futures.ThreadPoolExecutor())
+    return jaq.Store(concurrent.futures.ThreadPoolExecutor())
 
 
 def test_writer():
     l = []
-    w = theoryshop.Writer("key", l.append)
+    w = jaq.Writer("key", l.append)
     w.write(1)
     assert l == [1]
     w.write("2")

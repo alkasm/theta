@@ -1,14 +1,14 @@
 [tool.poetry]
-name = "theoryshop-alkasm"
+name = "jaq-alkasm"
 packages = [
-    {include = "theoryshop"}
+    {include = "jaq"}
 ]
 version = "1.1.1"
 description = "Extensions for multithreaded Python applications."
 authors = ["Alexander Reynolds <alex@theory.shop>"]
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/alkasm/theoryshop"
+repository = "https://github.com/alkasm/jaq"
 include = ["py.typed"]
 
 [tool.poetry.dependencies]

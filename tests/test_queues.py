@@ -1,8 +1,8 @@
 import threading
 import pytest
-import theoryshop
+import jaq
 
-EQ = theoryshop.EvictingQueue
+EQ = jaq.EvictingQueue
 
 
 def test_evicting_queue_basic():
@@ -76,7 +76,7 @@ def _suppress_q_exceptions(f):
     def g():
         try:
             f()
-        except (theoryshop.QueueStopped, theoryshop.QueueTimeout, StopIteration):
+        except (jaq.QueueStopped, jaq.QueueTimeout, StopIteration):
             pass
 
     return g
