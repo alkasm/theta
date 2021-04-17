@@ -1,6 +1,6 @@
 import collections
 import threading
-from typing import Generic, Iterable, List, Optional, TypeVar
+from typing import Deque, Generic, Iterable, List, Optional, TypeVar
 
 T = TypeVar("T")
 
@@ -71,7 +71,7 @@ class EvictingQueue(Generic[T]):
 
     def __init__(self, size: Optional[int] = None):
         """If size is None, the queue is unbounded."""
-        self._q: "collections.deque[T]" = collections.deque(maxlen=size)
+        self._q: Deque[T] = collections.deque(maxlen=size)
         self._cv: threading.Condition = threading.Condition()
         self._stop_event: threading.Event = threading.Event()
 

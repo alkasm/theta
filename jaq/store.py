@@ -8,9 +8,9 @@ import uuid
 
 logger = logging.getLogger(__name__)
 
-Future = concurrent.futures.Future[Any]
+Future = concurrent.futures.Future
 Callback = Callable[[Any], Any]
-Submitter = Callable[[Any], List[Future]]
+Submitter = Callable[[Any], List["Future[Any]"]]
 
 
 class Store:
@@ -121,7 +121,7 @@ class Store:
         return f"<{self.__class__.__qualname__} for keys {*(k for k in self.writers),}>"
 
     def _submitter(self, key: Any) -> Submitter:
-        def submit(val: Any) -> List[Future]:
+        def submit(val: Any) -> List["Future[Any]"]:
             fs = []
             with self._callback_lock:
                 callbacks = list(self.callbacks[key].values())
@@ -150,7 +150,7 @@ class Writer:
         self.key = key
         self.submit: Submitter = submit
 
-    def write(self, value: Any) -> List[Future]:
+    def write(self, value: Any) -> List["Future[Any]"]:
         """
         Write a value to the store, executing all registered callbacks. Returns
         the futures from the submitted callbacks.
@@ -170,8 +170,8 @@ class Writer:
         return f"<{self.__class__.__qualname__} for key {self.key!r}>"
 
 
-def _log_exception(key: Any) -> Callable[[Future], None]:
-    def f(future: Future) -> None:
+def _log_exception(key: Any) -> Callable[["Future[Any]"], None]:
+    def f(future: "Future[Any]") -> None:
         e = future.exception()
         if e is not None:
             logger.error(
