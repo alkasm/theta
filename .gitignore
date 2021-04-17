@@ -4,3 +4,4 @@ dist/
 venv/
 .vscode/
 .python-version
+docs/_build/

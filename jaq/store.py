@@ -8,23 +8,29 @@ import uuid
 
 logger = logging.getLogger(__name__)
 
+Future = concurrent.futures.Future
 Callback = Callable[[Any], Any]
-Submitter = Callable[[Any], List[concurrent.futures.Future]]
+Submitter = Callable[[Any], List["Future[Any]"]]
 
 
 class Store:
-    """Store for arbitrary data with an executor for submitting callback tasks.
+    """
+    Store for arbitrary data with an executor for submitting callback tasks.
 
     Register callbacks and create writers associated to a key; when a writer
     writes to the store, it will submit tasks to the executor to invoke all the
     callbacks for that key with the newly written value.
 
-    Retrieve a writer for some `key` with `store.writer(key)`.
+    Retrieve a writer for some key with `store.writer(key)`.
 
     The callback functions provided must take a single positional argument,
-    and will be called with the new value added to the store.
+    and will be called with the new value added to the store. Callback return
+    values are available as futures from `Writer.write()`.
 
     .. code-block:: python
+
+        from concurrent.futures import ThreadPoolExecutor
+        from jaq import Store
 
         executor = ThreadPoolExecutor()
         store = Store(executor)
@@ -55,36 +61,34 @@ class Store:
         {'value': 5}
     """
 
-    executor: concurrent.futures.ThreadPoolExecutor
-    writers: Dict[Any, "Writer"]
-    callbacks: DefaultDict[Any, Dict[str, Callback]]
-    _callback_keys: Dict[str, Any]
-    _callback_lock: threading.Lock
-
     def __init__(self, executor: concurrent.futures.ThreadPoolExecutor):
-        self.executor = executor
-        self.writers = {}
-        self.callbacks = collections.defaultdict(dict)
-        self._callback_keys = {}
-        self._callback_lock = threading.Lock()
+        """
+        Args:
+            executor: Thread pool to submit callback tasks, used when data is
+                added to the store.
+        """
+        self.executor: concurrent.futures.ThreadPoolExecutor = executor
+        self.writers: Dict[Any, "Writer"] = {}
+        self.callbacks: DefaultDict[Any, Dict[str, Callback]] = collections.defaultdict(
+            dict
+        )
+        self._callback_keys: Dict[str, Any] = {}
+        self._callback_lock: threading.Lock = threading.Lock()
 
     def add_callback(self, key: Any, f: Callback) -> str:
-        """Add a callback to execute on new values written under the key.
+        """
+        Add a callback to execute on new values written under the key.
 
-        The returned value is a string id for the callback which can be used to
-        remove it later with `remove_callback(id)`.
+        Returns a string identifier for the callback, which can be used to
+        remove it with `remove_callback()`.
 
         Args:
-            key: The key which links the callback to the writer. The key can be
-                any immutable type (same restriction as a dictionary key).
+            key: The key which links the callback to the writer. Can be any
+                immutable type (same restriction as a dictionary key).
             f: Callable executed as f(value) for each new value written to the
                 store under this key. Return values are available via futures
                 that the writer returns. Exceptions encountered while running
                 are logged, then ignored.
-
-        Returns:
-            str: An id for the callback, which can be used for unregistering
-                the callback. The id has the form "<key>::<f.__name__>::<uuid>".
         """
         id = f"{key}::{f.__name__}::{uuid.uuid4().hex}"
         with self._callback_lock:
@@ -93,13 +97,11 @@ class Store:
         return id
 
     def remove_callback(self, id: str) -> None:
-        """Removes the specified callback.
+        """
+        Remove the specified callback.
 
         Raises:
             KeyError: If there is no callback with the given id.
-
-        Args:
-            id: The identifier for the callback, returned by `add_callback()`.
         """
         with self._callback_lock:
             key = self._callback_keys[id]
@@ -107,15 +109,7 @@ class Store:
             del self.callbacks[key][id]
 
     def writer(self, key: Any) -> "Writer":
-        """Creates or retrieves a writer for the specified key.
-
-        Args:
-            key: A key to associate writers and callbacks. Any dictionary key
-                is valid.
-
-        Returns:
-            A writer for the specified key.
-        """
+        """Creates or retrieves a writer for the specified key."""
         try:
             return self.writers[key]
         except KeyError:
@@ -127,7 +121,7 @@ class Store:
         return f"<{self.__class__.__qualname__} for keys {*(k for k in self.writers),}>"
 
     def _submitter(self, key: Any) -> Submitter:
-        def submit(val: Any) -> List[concurrent.futures.Future]:
+        def submit(val: Any) -> List["Future[Any]"]:
             fs = []
             with self._callback_lock:
                 callbacks = list(self.callbacks[key].values())
@@ -141,26 +135,34 @@ class Store:
 
 
 class Writer:
-    """A writer for a specific key in the Store.
+    """
+    A writer for a specific key in the Store.
 
     Should be instantiated via `writer = store.writer(key)`.
     """
 
     def __init__(self, key: Any, submit: Submitter):
+        """
+        Args:
+            key: The key for the writer.
+            submit: The callback function to submit a value to the store.
+        """
         self.key = key
         self.submit: Submitter = submit
 
-    def write(self, value: Any) -> List[concurrent.futures.Future]:
-        """Writes a value to the store, executing any registered callbacks.
+    def write(self, value: Any) -> List["Future[Any]"]:
+        """
+        Write a value to the store, executing all registered callbacks. Returns
+        the futures from the submitted callbacks.
 
         This method is non-blocking, however the futures to the callbacks
-        are returned to wait on, if desired.
+        are returned to wait on, if desired. For example:
 
-        Args:
-            value: Value to write to the store.
+        .. code-block:: python
 
-        Returns:
-            Futures for the submitted callbacks.
+            writer = store.writer("key")
+            fs = writer.write("value")
+            concurrent.futures.wait(fs)
         """
         return self.submit(value)
 
@@ -168,8 +170,8 @@ class Writer:
         return f"<{self.__class__.__qualname__} for key {self.key!r}>"
 
 
-def _log_exception(key: Any) -> Callable[[concurrent.futures.Future], None]:
-    def f(future: concurrent.futures.Future) -> None:
+def _log_exception(key: Any) -> Callable[["Future[Any]"], None]:
+    def f(future: "Future[Any]") -> None:
         e = future.exception()
         if e is not None:
             logger.error(
