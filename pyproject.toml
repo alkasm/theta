@@ -3,7 +3,7 @@ name = "jaq-alkasm"
 packages = [
     {include = "jaq"}
 ]
-version = "1.1.1"
+version = "1.2.0"
 description = "Extensions for multithreaded Python applications."
 authors = ["Alexander Reynolds <alex@theory.shop>"]
 license = "MIT"
