@@ -1,7 +1,7 @@
-theoryshop package
+jaq package
 ==================
 
-.. currentmodule:: theoryshop
+.. currentmodule:: jaq
 
 Store
 -----
