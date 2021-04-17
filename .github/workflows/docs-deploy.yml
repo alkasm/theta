@@ -19,7 +19,9 @@ jobs:
       - name: Install package and deps
         run: poetry install
       - name: Generate docs
-        run: pushd docs & make html
+        run: | 
+          cd ./docs
+          make html
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
