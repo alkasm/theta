@@ -1,6 +1,6 @@
 import collections
 import threading
-from typing import Deque, Generic, Iterable, List, Optional, TypeVar
+from typing import Deque, Generic, Iterator, List, Optional, TypeVar
 
 T = TypeVar("T")
 
@@ -100,7 +100,7 @@ class EvictingQueue(Generic[T]):
                 return self._q.popleft()
             raise QueueTimeout
 
-    def iter_timeout(self, timeout: Optional[float] = None) -> Iterable[T]:
+    def iter_timeout(self, timeout: Optional[float] = None) -> Iterator[T]:
         """
         Iterate over values as they become available in FIFO order. The
         iterator exhausts if the timeout (in seconds) expires before a new
@@ -155,7 +155,7 @@ class EvictingQueue(Generic[T]):
     def __len__(self) -> int:
         return len(self._q)
 
-    def __iter__(self) -> Iterable[T]:
+    def __iter__(self) -> Iterator[T]:
         """
         Iterate over values as they become available. May block for an
         arbitrarily long time. The iterator will be exhausted if the queue is
