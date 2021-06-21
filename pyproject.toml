@@ -13,7 +13,6 @@ include = ["py.typed"]
 
 [tool.poetry.dependencies]
 python = "^3.6"
-sphinx-copybutton = "^0.3.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.2"
@@ -21,6 +20,7 @@ mypy = "^0.812"
 black = "^20.8b1"
 Sphinx = "^3.5.3"
 furo = "^2021.3.20-beta.31"
+sphinx-copybutton = "^0.3.3"
 
 [build-system]
 requires = ["poetry_core>=1.0.0"]
