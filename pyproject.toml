@@ -1,14 +1,14 @@
 [tool.poetry]
-name = "jaq-alkasm"
+name = "theta-alkasm"
 packages = [
-    {include = "jaq"}
+    {include = "theta"}
 ]
 version = "1.2.0"
 description = "Extensions for multithreaded Python applications."
 authors = ["Alexander Reynolds <alex@theory.shop>"]
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/alkasm/jaq"
+repository = "https://github.com/alkasm/theta"
 include = ["py.typed"]
 
 [tool.poetry.dependencies]

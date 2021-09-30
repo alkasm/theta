@@ -27,7 +27,7 @@ class EvictingQueue(Generic[T]):
 
     .. code-block::
 
-        from jaq import EvictingQueue
+        from theta import EvictingQueue
 
         q = EvictingQueue(5)
         ...

@@ -1,16 +1,16 @@
 import pytest
-import jaq
+import theta
 import concurrent.futures
 
 
 @pytest.fixture
 def store():
-    return jaq.Store(concurrent.futures.ThreadPoolExecutor())
+    return theta.Store(concurrent.futures.ThreadPoolExecutor())
 
 
 def test_writer():
     l = []
-    w = jaq.Writer("key", l.append)
+    w = theta.Writer("key", l.append)
     w.write(1)
     assert l == [1]
     w.write("2")

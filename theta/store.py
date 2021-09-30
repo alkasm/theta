@@ -30,7 +30,7 @@ class Store:
     .. code-block:: python
 
         from concurrent.futures import ThreadPoolExecutor
-        from jaq import Store
+        from theta import Store
 
         executor = ThreadPoolExecutor()
         store = Store(executor)

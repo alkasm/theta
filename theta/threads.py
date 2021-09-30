@@ -21,7 +21,7 @@ class StoppableThread(threading.Thread):
         import logging
         import threading
         import time
-        from jaq import StoppableThread
+        from theta import StoppableThread
 
         logging.basicConfig(level=logging.INFO)
 
