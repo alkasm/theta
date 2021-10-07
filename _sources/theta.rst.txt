@@ -1,7 +1,7 @@
-jaq package
+theta package
 ==================
 
-.. currentmodule:: jaq
+.. currentmodule:: theta
 
 Store
 -----
