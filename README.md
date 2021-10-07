@@ -1,8 +1,8 @@
 <h1 align="center">𝜗</h1>
 
-* `EvictingQueue` - SPSC queue, similar to `queue.Queue` but with evicting, non-blocking puts and simple iteration semantics.  
-* `StoppableThread` - thread which contains a `threading.Event` stop flag for cancellable tasks.  
-* `Store` - callback executor primarily designed to be used as a simple MPMC data store.  
+* `EvictingQueue` - queue with evicting, non-blocking puts, blocking gets with timeouts, and iteration semantics
+* `StoppableThread` - thread with cancellation semantics
+* `Store` - callback executor with thread-safe writers
 
 [Read the docs](https://alkasm.github.io/theta/) for examples and the API reference.
 
