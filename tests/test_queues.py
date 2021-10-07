@@ -1,8 +1,8 @@
 import threading
 import pytest
-import jaq
+import theta
 
-EQ = jaq.EvictingQueue
+EQ = theta.EvictingQueue
 
 
 def test_evicting_queue_basic():
@@ -76,7 +76,7 @@ def _suppress_q_exceptions(f):
     def g():
         try:
             f()
-        except (jaq.QueueStopped, jaq.QueueTimeout, StopIteration):
+        except (theta.QueueStopped, theta.QueueTimeout, StopIteration):
             pass
 
     return g
