@@ -20,6 +20,7 @@ black = "*"
 sphinx = "*"
 furo = "*"
 sphinx-copybutton = "*"
+pytest = "*"
 
 [build-system]
 requires = ["poetry_core>=1.0.0"]
