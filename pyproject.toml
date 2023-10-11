@@ -12,15 +12,14 @@ repository = "https://github.com/alkasm/theta"
 include = ["py.typed"]
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.10"
 
-[tool.poetry.dev-dependencies]
-pytest = "^6.2.2"
-mypy = "^0.812"
-black = "^20.8b1"
-Sphinx = "^3.5.3"
-furo = "^2021.3.20-beta.31"
-sphinx-copybutton = "^0.3.3"
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.6.0"
+black = "^23.9.1"
+sphinx = "^7.2.6"
+furo = "^2023.9.10"
+sphinx-copybutton = "^0.5.2"
 
 [build-system]
 requires = ["poetry_core>=1.0.0"]
